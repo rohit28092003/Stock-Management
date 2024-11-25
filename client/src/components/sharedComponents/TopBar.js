@@ -10,16 +10,17 @@ const TopBar = () => {
           <span className="logo">StockIt</span>
         </div>
         <div className="topRight">
-          <div className="topbarIconContainer">
+          {/* <div className="topbarIconContainer">
             <MdNotificationsNone size="30px" />
             <span className="topIconBadge">2</span>
           </div>
           <div className="topbarIconContainer">
             <MdOutlineSettings size="30px" />
-          </div>
-          <div className="topbarIconContainer">
-            <CgProfile size="30px" />
-          </div>
+          </div> */}
+          {/* <div className="topbarIconContainer">
+            <CgProfile size="30px" 
+            <SignOutButton style={styles.button}>Sign Out</SignOutButton>/>
+          </div> */}
         </div>
       </div>
     </div>

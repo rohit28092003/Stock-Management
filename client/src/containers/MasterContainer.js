@@ -13,6 +13,16 @@ import SideBar from '../components/sharedComponents/SideBar';
 import Footer from '../components/sharedComponents/Footer';
 import Clerk from '../Clerk';
 const MasterContainer = () => {
+  const Layout = ({ children }) => (
+    <>
+    <TopBar/>
+    <div className="sidebar-content-container">
+     <SideBar/>
+     {children}
+    </div>
+    </>
+   
+  );
     const [apiData, setApiData] = useState(fetchedData);
     // const [apiData, setApiData] = useState(null);
     const [historicalPrices, setHistoricalPrices] = useState(null);
@@ -30,20 +40,20 @@ const MasterContainer = () => {
     console.log(historicalPrices)
   
     return (
-
-
     <>
-
-
       <Router>
-        <TopBar/>
-          <div className="sidebar-content-container">
-            <SideBar/>
-            
             <Routes>
-            
-              <Route exact path='/Portfolio' element={<PortfolioContainer apiData={apiData}/>} />
-              <Route path='/stockmarket' element={<StockMarketContainer stocks={apiData} handleHistPrices={handleHistPrices}/>} />
+              <Route exact path='/Portfolio' element={
+                
+                <Layout>
+                  <PortfolioContainer apiData={apiData}/>
+                </Layout>
+                } />
+              <Route path='/stockmarket' element={
+                <Layout>
+ <StockMarketContainer stocks={apiData} handleHistPrices={handleHistPrices}/>
+                </Layout>
+               } />
             </Routes>
      {/* <div className="main">
      <Header />
@@ -56,7 +66,7 @@ const MasterContainer = () => {
       </Router>
      </div> */}
     
-     </div>
+     
      {/* <Footer /> */}
      </Router>
        

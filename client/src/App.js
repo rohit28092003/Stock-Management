@@ -2,17 +2,20 @@
 import MasterContainer from './containers/MasterContainer';
 import Clerk from './Clerk';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Footer from './components/sharedComponents/Footer';
 function App() {
   return (
     <>
 <Router>
   <Routes>
-    <Route>
-    <Route exact path='/'  element={<Clerk/>}/>
-    </Route>
+    {/* <Route> */}
+    <Route exact path='/signin'  element={<Clerk/>}/>
+     
+    {/* </Route> */}
   </Routes>
 </Router>
-      <MasterContainer />
+<MasterContainer /> 
+  {/* <Footer /> */}
     </>
   );
   }

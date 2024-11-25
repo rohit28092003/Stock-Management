@@ -6,10 +6,11 @@ const Footer = () => {
         <>
         <footer className="footer">
             <div className="contributers">
-            <p>Contributers</p>
-            <p><a href="https://github.com/matthewmcfarlane">Matthew McFarlane</a></p>
-            <p><a href="https://github.com/Boystavros">Sacha Ponniah</a></p>
-            <p><a href="https://github.com/Minta-Ra">Raminta</a></p>
+            <p>Made with ❤️</p>
+            <p>Keshav Bansal</p>
+            <p>Rohit Deepchandani</p>
+            <p>Vaibhav Baldeva</p>
+            <p>Dhruv Jain</p>
             </div>
         </footer>
         </>

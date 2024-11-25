@@ -12,20 +12,20 @@ const SideBar = () => {
             <div className="sidebar">
                 <div className="sidebarWrapper">
                 <div className="sidebarMenu">
-                    <h3 className="sidebarTitle">Dashboard</h3>
+                    {/* <h3 className="sidebarTitle">Dashboard</h3> */}
                     <ul className="sidebarList">
                         <li className="sidebarListItem">
                             <BsFillCollectionFill />
-                            <Link className="text-decoration-none" to="/">My Portfolio</Link>
+                            <Link className="text-decoration-none" to="/portfolio">My Portfolio</Link>
                         </li>
                         <li className="sidebarListItem">
                             <AiOutlineStock />
                             <Link className="text-decoration-none"  to="/stockmarket">Discover</Link>
                         </li>
-                        <li className="sidebarListItem">
+                        {/* <li className="sidebarListItem">
                             <AiOutlineHistory />
                              History
-                        </li>
+                        </li> */}
                     </ul>
                 </div>
             </div>
