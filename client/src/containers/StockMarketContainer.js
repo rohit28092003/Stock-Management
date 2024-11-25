@@ -77,7 +77,6 @@ const StockMarketContainer = ({stocks, handleHistPrices, historicalPrices}) => {
                 <Row>
                     {searchedStockSymbol && stockDetails && stockPrices ? <Col><StockItemDetails symbol={searchedStockSymbol} handleHistPrices={handleHistPrices} historicalPrices={historicalPrices} addToFavourites={addToFavourites} stockPrices={stockPrices} stockDetails={stockDetails}/></Col> : null}
                 </Row>
-
                 {displayFavourites}
 
                 <Row>

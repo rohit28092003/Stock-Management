@@ -10,7 +10,8 @@ app.use(
   })
 );
 app.use(express.json());
-
+// GtjRHVMIBdvmFZKb
+// rohitdeepchandani
 MongoClient.connect("mongodb://localhost:27017", { useUnifiedTopology: true })
   .then((client) => {
     const db = client.db("portfolio");
@@ -19,6 +20,10 @@ MongoClient.connect("mongodb://localhost:27017", { useUnifiedTopology: true })
     app.use("/api/shares", sharesRouter);
   })
   .catch(console.error);
+
+app.get('/',(req,res)=>{
+  console.log("hi iam there")
+})
 
 app.listen(8080, function () {
   console.log(`Listening on port ${this.address().port}`);
