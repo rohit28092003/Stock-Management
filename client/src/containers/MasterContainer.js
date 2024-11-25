@@ -11,7 +11,7 @@ import TopBar from '../components/sharedComponents/TopBar';
 
 import SideBar from '../components/sharedComponents/SideBar';
 import Footer from '../components/sharedComponents/Footer';
-
+import Clerk from '../Clerk';
 const MasterContainer = () => {
     const [apiData, setApiData] = useState(fetchedData);
     // const [apiData, setApiData] = useState(null);
@@ -39,8 +39,10 @@ const MasterContainer = () => {
         <TopBar/>
           <div className="sidebar-content-container">
             <SideBar/>
+            
             <Routes>
-              <Route exact path='/' element={<PortfolioContainer apiData={apiData}/>} />
+            
+              <Route exact path='/Portfolio' element={<PortfolioContainer apiData={apiData}/>} />
               <Route path='/stockmarket' element={<StockMarketContainer stocks={apiData} handleHistPrices={handleHistPrices}/>} />
             </Routes>
      {/* <div className="main">
