@@ -12,7 +12,7 @@ export default function Clerk() {
         ) : (
           <SignInButton
             style={styles.button}
-            forceRedirectUrl="http://localhost:3000/portfolio"
+            forceRedirectUrl="https://stock-management-lac.vercel.app/portfolio"
             mode="modal"
           >
             Sign In
