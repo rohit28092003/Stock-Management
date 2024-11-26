@@ -53,7 +53,7 @@ app.use(
 app.use(express.json());
 
 // Fetch Mongo URI from environment variable (stored in .env file)
-const MONGO_URI = "mongodb://localhost:27017";
+const MONGO_URI = process.env.mongodburl;
 
 // Connect to MongoDB Atlas using Mongoose
 mongoose
