@@ -52,7 +52,7 @@ app.use((_req,res,next)=>{
 })
 app.use(
   cors({
-    origin: "https://stock-management-lac.vercel.app", // Allow frontend app to connect
+    origin: "*", // Allow frontend app to connect
     credentials:true,
   })
 );
@@ -60,8 +60,8 @@ app.use(
 app.use(express.json());
 
 // Fetch Mongo URI from environment variable (stored in .env file)
-const MONGO_URI = process.env.mongodburl;
-
+// const MONGO_URI = process.env.mongodburl;
+const MONGO_URI="mongodb://localhost:27017/"
 // Connect to MongoDB Atlas using Mongoose
 mongoose
   .connect(process.env.mongodburl, {
