@@ -1,4 +1,4 @@
-const baseURL = " https://3bfc-117-203-246-41.ngrok-free.app/api/shares";
+const baseURL = "  https://adab-112-196-126-3.ngrok-free.app/api/shares";
 
 export const getHeldShares = () => {
   return fetch(baseURL).then((res) => res.json());
