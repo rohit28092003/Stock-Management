@@ -1,4 +1,4 @@
-const baseURL = "  https://adab-112-196-126-3.ngrok-free.app/api/shares";
+const baseURL = "http://localhost:8080/api/shares//api/shares";
 
 export const getHeldShares = () => {
   return fetch(baseURL).then((res) => res.json());
