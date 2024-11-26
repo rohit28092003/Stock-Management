@@ -1,4 +1,4 @@
-const baseURL = "http://localhost:4000//api/shares";
+const baseURL = "http://localhost:4000/api/shares";
 
 export const getHeldShares = () => {
   return fetch(baseURL).then((res) => res.json());
