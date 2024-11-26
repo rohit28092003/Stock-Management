@@ -44,10 +44,16 @@ const cors = require("cors");
 const app = express();
 
 // CORS configuration
+app.use((_req,res,next)=>{
+  res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', '*');
+    res.header('Access-Control-Allow-Methods', '*');
+  next();
+})
 app.use(
   cors({
     origin: "https://stock-management-lac.vercel.app", // Allow frontend app to connect
-    redentials:true,
+    credentials:true,
   })
 );
 
