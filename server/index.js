@@ -46,7 +46,7 @@ const app = express();
 // CORS configuration
 app.use(
   cors({
-    origin: "http://localhost:3000", // Allow frontend app to connect
+    origin: "https://stock-management-lac.vercel.app/", // Allow frontend app to connect
   })
 );
 
