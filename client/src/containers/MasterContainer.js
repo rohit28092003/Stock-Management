@@ -1,85 +1,72 @@
-import React, {useState, useEffect} from 'react';
-import {getCurrentStocks} from '../services/ApiServices';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import "./master.css"
-import Header from "../components/sharedComponents/Header";
-import NavBar from "../components/sharedComponents/NavBar";
-import StockMarketContainer from './StockMarketContainer';
-import PortfolioContainer from "./PortfolioContainer";
-import {fetchedData} from '../components/stockMarketComponents/fetchedData';
-import TopBar from '../components/sharedComponents/TopBar';
-
+import "./master.css";
+import TopBar from "../components/sharedComponents/TopBar";
 import SideBar from '../components/sharedComponents/SideBar';
-import Footer from '../components/sharedComponents/Footer';
-import Clerk from '../Clerk';
+import PortfolioContainer from "./PortfolioContainer";
+import StockMarketContainer from './StockMarketContainer';
+import { getCurrentStocks } from '../services/ApiServices';
+import { fetchedData } from '../components/stockMarketComponents/fetchedData';
+
 const MasterContainer = () => {
-  const Layout = ({ children }) => (
-    <>
-    <TopBar/>
-    <div className="sidebar-content-container">
-     <SideBar/>
-     {children}
-    </div>
-    </>
-   
-  );
-    const [apiData, setApiData] = useState(fetchedData);
-    // const [apiData, setApiData] = useState(null);
-    const [historicalPrices, setHistoricalPrices] = useState(null);
+  const [apiData, setApiData] = useState(fetchedData); // Fallback data for mock display
+  const [historicalPrices, setHistoricalPrices] = useState(null);
 
-
-    useEffect(() => {
-      getCurrentStocks()
+  useEffect(() => {
+    getCurrentStocks()
       .then(data => setApiData(data))
-    },[]);
+      .catch(err => console.error("Error fetching stock data:", err)); // Handle errors
+  }, []);
 
+  const handleHistPrices = (histPricesObject) => {
+    setHistoricalPrices(histPricesObject);
+    console.log("Historical Prices Updated:", histPricesObject);
+  };
 
-    const handleHistPrices = (histPricesObject) => {
-      setHistoricalPrices(histPricesObject)
-    };
-    console.log(historicalPrices)
-  
-    return (
-    <>
-      <Router>
+  return (
+    <Router>
+      <>
+        <TopBar />
+        <div className="sidebar-content-container">
+          <SideBar />
+          <div className="main-content">
             <Routes>
-              <Route exact path='/Portfolio' element={
-                
-                <Layout>
-                  <PortfolioContainer apiData={apiData}/>
-                </Layout>
-                } />
-              <Route path='/stockmarket' element={
-                <Layout>
- <StockMarketContainer stocks={apiData} handleHistPrices={handleHistPrices}/>
-                </Layout>
-               } />
+              <Route 
+                path="/" 
+                element={
+                  apiData ? (
+                    <PortfolioContainer apiData={apiData} />
+                  ) : (
+                    <div>Loading Portfolio...</div>
+                  )
+                } 
+              />
+              <Route 
+                path="/Portfolio" 
+                element={
+                  apiData ? (
+                    <PortfolioContainer apiData={apiData} />
+                  ) : (
+                    <div>Loading Portfolio...</div>
+                  )
+                } 
+              />
+              <Route 
+                path="/stockmarket" 
+                element={
+                  apiData ? (
+                    <StockMarketContainer stocks={apiData} handleHistPrices={handleHistPrices} />
+                  ) : (
+                    <div>Loading Stock Market...</div>
+                  )
+                } 
+              />
             </Routes>
-     {/* <div className="main">
-     <Header />
-      <Router>
-        <NavBar />
-        <Routes>
-          <Route exact path='/' element={<PortfolioContainer apiData={apiData}/>} />
-          <Route path='/stockmarket' element={<StockMarketContainer stocks={apiData} handleHistPrices={handleHistPrices} historicalPrices={historicalPrices} />} />
-        </Routes>
-      </Router>
-     </div> */}
-    
-     
-     {/* <Footer /> */}
-     </Router>
-       
-      
-    
+          </div>
+        </div>
+      </>
+    </Router>
+  );
+};
 
-       
-       
-       
-    
-        
-    </>
-    );
-}
- 
 export default MasterContainer;
