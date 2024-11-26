@@ -64,15 +64,40 @@ const MONGO_URI = process.env.mongodburl;
 
 // Connect to MongoDB Atlas using Mongoose
 mongoose
-  .connect(MONGO_URI, {
+  .connect(process.env.mongodburl, {
     useNewUrlParser: true,   // Use the new URL parser
     useUnifiedTopology: true, // Use the unified topology engine
   })
-  .then(() => {
+  .then(async () => {
     console.log("Connected to MongoDB Atlas");
 
     // Once connected, set up the routes
     const db = mongoose.connection; // Access the mongoose connection
+    try {
+      // Reference the 'shares' collection
+      const sharesCollection = db.collection("shares");
+
+      // Check if the collection exists by attempting a find or an insert
+      const count = await sharesCollection.countDocuments();
+      console.log(`Shares collection exists with ${count} documents.`);
+
+      // If no documents exist, insert dummy data
+      if (count === 0) {
+        await sharesCollection.insertOne({ name: "Dummy Share", price: 100 });
+        console.log("Dummy data inserted into 'shares' collection.");
+      }
+
+      // Proceed to create the router
+      const sharesRouter = createRouter(sharesCollection);
+      app.use("/api/shares", sharesRouter);
+
+    } catch (error) {
+      console.error("Error handling the 'shares' collection:", error);
+
+      // Optional: Manually create the collection if it doesn't exist
+      await db.createCollection("shares");
+      console.log("Created 'shares' collection manually.");
+    }
     const sharesCollection = db.collection("shares");
     const sharesRouter = createRouter(sharesCollection); // Assuming createRouter works with Mongoose collections
     app.use("/api/shares", sharesRouter);

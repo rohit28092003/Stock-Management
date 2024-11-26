@@ -2,7 +2,6 @@
 db.dropDatabase();
 
 db.shares.insertMany([
-    
     {
         name: "Tesla Inc",
         symbol: "TSLA",
