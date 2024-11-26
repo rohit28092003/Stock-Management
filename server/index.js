@@ -46,7 +46,8 @@ const app = express();
 // CORS configuration
 app.use(
   cors({
-    origin: "https://stock-management-lac.vercel.app/", // Allow frontend app to connect
+    origin: "https://stock-management-lac.vercel.app", // Allow frontend app to connect
+    redentials:true,
   })
 );
 
