@@ -88,6 +88,8 @@ app.get("/", (req, res) => {
 });
 
 // Start the server
-app.listen(8080, function () {
-  console.log(`Listening on port ${this.address().port}`);
-});
+const port = 4000
+app.listen(port, ()=>{
+  console.log(`listening on ${port}`)
+}
+);
