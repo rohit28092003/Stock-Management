@@ -1,4 +1,4 @@
-const baseURL = "http://localhost:8080/api/shares//api/shares";
+const baseURL = "https://stock-management-v5n4.vercel.app/api/shares//api/shares";
 
 export const getHeldShares = () => {
   return fetch(baseURL).then((res) => res.json());
